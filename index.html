@@ -1,1 +1,640 @@
-hello world
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoodMaps - Computer Science Roadmaps</title>
+    
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Google Font (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Configure Tailwind to use 'Inter' font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        /* Smooth scroll for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar for modal */
+        #modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        #modal-content::-webkit-scrollbar-track {
+            background: #2d3748; /* bg-gray-700 */
+        }
+        #modal-content::-webkit-scrollbar-thumb {
+            background: #4a5568; /* bg-gray-600 */
+            border-radius: 4px;
+        }
+        #modal-content::-webkit-scrollbar-thumb:hover {
+            background: #718096; /* bg-gray-500 */
+        }
+
+        /* Hide modal by default */
+        #modal {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans leading-relaxed">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-30 w-full bg-gray-900/70 backdrop-blur-md border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Title -->
+                <div class="flex-shrink-0 flex items-center">
+                    <svg class="w-8 h-8 text-indigo-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m0-6.75a3 3 0 01-3-3h1.5a1.5 1.5 0 011.5 1.5v3.75m0-3.75a3 3 0 013 3h-1.5a1.5 1.5 0 01-1.5-1.5V6.75m0 0v3.75m0-3.75a3 3 0 013 3h-1.5a1.5 1.5 0 01-1.5-1.5V6.75m0 0v3.75m0-3.75a3 3 0 013 3h-1.5a1.5 1.5 0 01-1.5-1.5V6.75m-6 5.25v3.75m0-3.75a3 3 0 01-3 3H1.5a1.5 1.5 0 01-1.5-1.5V12m0 0a3 3 0 013-3h1.5a1.5 1.5 0 011.5 1.5v3.75m0 0a3 3 0 013 3h-1.5a1.5 1.5 0 01-1.5-1.5V12m0 0v3.75m0-3.75a3 3 0 013 3h-1.5a1.5 1.5 0 01-1.5-1.5V12m-6 5.25v3.75m0-3.75a3 3 0 01-3 3H1.5a1.5 1.5 0 01-1.5-1.5V12m0 0a3 3 0 013-3h1.5a1.5 1.5 0 011.5 1.5v3.75m0 0a3 3 0 013 3h-1.5a1.5 1.5 0 01-1.5-1.5V12M15 6.75v3.75m0-3.75a3 3 0 013 3h1.5a1.5 1.5 0 011.5 1.5v3.75m0-3.75a3 3 0 01-3 3h-1.5a1.5 1.5 0 01-1.5-1.5V6.75m0 0v3.75m0-3.75a3 3 0 01-3-3h1.5a1.5 1.5 0 011.5 1.5v3.75m0 0a3 3 0 013 3h-1.5a1.5 1.5 0 01-1.5-1.5V12m-6 5.25v3.75m0-3.75a3 3 0 01-3 3H7.5a1.5 1.5 0 01-1.5-1.5V12m0 0a3 3 0 013-3h1.5a1.5 1.5 0 011.5 1.5v3.75m0 0a3 3 0 013 3h-1.5a1.5 1.5 0 01-1.5-1.5V12" />
+                    </svg>
+                    <span class="text-2xl font-bold text-white">GoodMaps</span>
+                </div>
+                <!-- GitHub Link -->
+                <div>
+                    <a href="https://github.com/your-username/good-maps" target="_blank" rel="noopener noreferrer" class="group text-gray-400 hover:text-white transition duration-150 ease-in-out">
+                        <span class="sr-only">GitHub</span>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .267.18.577.688.48C19.135 20.165 22 16.418 22 12 22 6.477 17.523 2 12 2z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Hero Section -->
+        <section class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                Find Your Path in
+                <span class="text-indigo-400">Computer Science</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+                Welcome to GoodMaps, your open-source collection of curated roadmaps to help you navigate all areas of tech, from Web Development to AI.
+            </p>
+        </section>
+
+        <!-- Search and Filter Section -->
+        <section class="mb-10">
+            <!-- Search Bar -->
+            <div class="mb-6 relative">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
+                </div>
+                <input type="text" id="search-input"
+                       class="w-full pl-11 pr-4 py-3 bg-gray-800 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition duration-150"
+                       placeholder="Search for roadmaps (e.g., 'React', 'Python', 'DevOps')...">
+            </div>
+
+            <!-- Category Filters -->
+            <div id="category-filters" class="flex flex-wrap gap-2 justify-center">
+                <!-- Category buttons will be dynamically inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Roadmap Grid -->
+        <section>
+            <div id="roadmap-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Roadmap cards will be dynamically inserted here by JavaScript -->
+            </div>
+
+            <!-- No Results Message -->
+            <div id="no-results" class="text-center text-gray-400 py-16 hidden">
+                <svg class="w-16 h-16 mx-auto mb-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                </svg>
+                <h3 class="text-2xl font-semibold text-white mb-2">No Roadmaps Found</h3>
+                <p>Try adjusting your search or filter criteria.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 border-t border-gray-700 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-400">
+            <p>&copy; <span id="current-year"></span> GoodMaps. An open-source project.</p>
+            <p class="mt-1">Contribute or add your own roadmap on <a href="https://github.com/your-username/good-maps" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-300 underline">GitHub</a>.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Container -->
+    <div id="modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 ease-in-out">
+        <!-- Modal Content -->
+        <div class="bg-gray-800 rounded-lg shadow-2xl max-w-3xl w-full max-h-[90vh] flex flex-col border border-gray-700">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-5 border-b border-gray-700">
+                <h2 id="modal-title" class="text-2xl font-bold text-white">Roadmap Title</h2>
+                <button id="modal-close" class="text-gray-400 hover:text-white transition duration-150">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div id="modal-content" class="p-6 overflow-y-auto space-y-6">
+                <!-- Modal content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===================================================================== -->
+    <!-- JAVASCRIPT APPLICATION LOGIC                                          -->
+    <!-- ===================================================================== -->
+    <script>
+        // --- DATA SOURCE ---
+        // All roadmaps are stored here. Add new roadmaps to this array.
+        const roadmapsData = [
+            {
+                id: 'frontend',
+                category: 'Web Development',
+                title: 'Frontend Developer',
+                description: 'Learn to build modern, responsive, and interactive user interfaces for the web.',
+                tags: ['HTML', 'CSS', 'JavaScript', 'React', 'UI/UX', 'Accessibility'],
+                details: {
+                    introduction: "The Frontend Developer roadmap guides you through the essential technologies to build what users see and interact with in their browser.",
+                    steps: [
+                        { 
+                            title: '1. Internet Basics', 
+                            content: "Understand how the internet works. Learn about HTTP(S), browsers, DNS, and domain names. This is the foundation for all web development." 
+                        },
+                        { 
+                            title: '2. HTML (HyperText Markup Language)', 
+                            content: "Learn the structure of web pages. Understand semantic HTML, forms, tables, accessibility (a11y) basics, and SEO fundamentals." 
+                        },
+                        { 
+                            title: '3. CSS (Cascading Style Sheets)', 
+                            content: "Learn how to style web pages. Master the box model, Flexbox, CSS Grid, media queries (responsive design), and variables. Explore frameworks like Tailwind CSS or Bootstrap." 
+                        },
+                        { 
+                            title: '4. JavaScript (The Language)', 
+                            content: "Learn the core language of the web. Understand variables, data types, functions, DOM manipulation, events, asynchronous JS (Promises, async/await), and ES6+ features." 
+                        },
+                        { 
+                            title: '5. Pick a Frontend Framework', 
+                            content: "Modern web apps use frameworks. Choose one and learn it deeply. React is the most popular, followed by Vue.js and Svelte. Angular is also a strong choice for enterprise-level apps." 
+                        },
+                        { 
+                            title: '6. Version Control (Git)', 
+                            content: "Learn how to manage your code with Git. Understand how to create repositories, commit changes, branch, merge, and collaborate on platforms like GitHub or GitLab." 
+                        },
+                        { 
+                            title: '7. Build & Deploy', 
+                            content: "Build projects! This is the most important step. Deploy your static sites using services like Netlify, Vercel, or GitHub Pages." 
+                        }
+                    ],
+                    resources: [
+                        { name: 'MDN Web Docs', url: 'https://developer.mozilla.org/' },
+                        { name: 'freeCodeCamp', url: 'https://www.freecodecamp.org/' },
+                        { name: 'The Odin Project', url: 'https://www.theodinproject.com/' }
+                    ]
+                }
+            },
+            {
+                id: 'backend',
+                category: 'Web Development',
+                title: 'Backend Developer',
+                description: 'Learn to build the server-side logic, databases, and APIs that power web applications.',
+                tags: ['Node.js', 'Python', 'Go', 'SQL', 'NoSQL', 'API', 'Docker'],
+                details: {
+                    introduction: "The Backend Developer roadmap focuses on the 'server side' of web applications. This includes databases, server logic, and Application Programming Interfaces (APIs).",
+                    steps: [
+                        { 
+                            title: '1. Pick a Language & Framework', 
+                            content: "Choose a language for your server-side logic. Popular choices include: Node.js (with Express or NestJS), Python (with Django or Flask), Go (with Gin), Java (with Spring Boot), or PHP (with Laravel)." 
+                        },
+                        { 
+                            title: '2. Understand Databases', 
+                            content: "Learn how to store and retrieve data. Understand the difference between SQL (e.g., PostgreSQL, MySQL) and NoSQL (e.g., MongoDB, Redis) databases. Learn basic SQL commands (SELECT, INSERT, UPDATE, DELETE)." 
+                        },
+                        { 
+                            title: '3. Learn about APIs', 
+                            content: "Understand how the frontend and backend communicate. Learn to build and consume RESTful APIs. Also, explore modern alternatives like GraphQL and gRPC." 
+                        },
+                        { 
+                            title: '4. Authentication & Security', 
+                            content: "Learn how to secure your application. Understand concepts like hashing passwords (e.g., bcrypt), session management, JWT (JSON Web Tokens), OAuth 2.0, and basic principles like CORS and input validation." 
+                        },
+                        { 
+                            title: '5. Version Control (Git)', 
+                            content: "Essential for all developers. Learn Git, GitHub/GitLab, and collaborative workflows." 
+                        },
+                        { 
+                            title: '6. Basics of Deployment & DevOps', 
+                            content: "Learn how to get your application on the internet. Understand basic concepts of containerization (Docker) and CI/CD pipelines." 
+                        }
+                    ],
+                    resources: [
+                        { name: 'Roadmap.sh (Backend)', url: 'https://roadmap.sh/backend' },
+                        { name: 'Postman API Platform', url: 'https://www.postman.com/' },
+                        { name: 'SQLBolt - Learn SQL', url: 'https://sqlbolt.com/' }
+                    ]
+                }
+            },
+            {
+                id: 'devops',
+                category: 'DevOps & Cloud',
+                title: 'DevOps Engineer',
+                description: 'Bridge the gap between development and operations. Focus on CI/CD, automation, and infrastructure.',
+                tags: ['CI/CD', 'Docker', 'Kubernetes', 'AWS', 'Terraform', 'Ansible', 'Linux'],
+                details: {
+                    introduction: "DevOps is a culture and set of practices that automates and integrates the processes between software development (Dev) and IT operations (Ops).",
+                    steps: [
+                        { 
+                            title: '1. Master the Linux Command Line', 
+                            content: "Most servers run on Linux. You must be comfortable with the terminal, shell scripting (like Bash), managing processes, and the file system." 
+                        },
+                        { 
+                            title: '2. Learn a Programming Language', 
+                            content: "You don't need to be an expert, but you must know how to script and automate. Python and Go are the most popular choices in the DevOps world." 
+                        },
+                        { 
+                            title: '3. CI/CD (Continuous Integration/Delivery)', 
+                            content: "This is the heart of DevOps. Learn tools like Jenkins, GitLab CI, or GitHub Actions to automate building, testing, and deploying code." 
+                        },
+                        { 
+                            title: '4. Containerization (Docker)', 
+                            content: "Learn how to package applications into isolated containers with Docker. This ensures consistency across all environments." 
+                        },
+                        { 
+                            title: '5. Container Orchestration (Kubernetes)', 
+                            content: "Learn how to manage, scale, and deploy containerized applications at scale using Kubernetes (k8s). This is a highly in-demand skill." 
+                        },
+                        { 
+                            title: '6. Infrastructure as Code (IaC)', 
+                            content: "Learn to manage your infrastructure (servers, databases, networks) using code. The most popular tool is Terraform. Also look into configuration management tools like Ansible." 
+                        },
+                        { 
+                            title: '7. Pick a Cloud Provider', 
+                            content: "Master at least one major cloud provider: Amazon Web Services (AWS), Google Cloud (GCP), or Microsoft Azure. Understand their core services (compute, storage, networking)." 
+                        }
+                    ],
+                    resources: [
+                        { name: 'Roadmap.sh (DevOps)', url: 'https://roadmap.sh/devops' },
+                        { name: 'Docker Documentation', url: 'https://docs.docker.com/' },
+                        { name: 'Kubernetes Documentation', url: 'https://kubernetes.io/docs/' }
+                    ]
+                }
+            },
+            {
+                id: 'ai-ml',
+                category: 'AI & Data Science',
+                title: 'AI / Machine Learning',
+                description: 'Dive into data, statistics, and algorithms to build models that can learn and make predictions.',
+                tags: ['Python', 'Pandas', 'NumPy', 'TensorFlow', 'PyTorch', 'SQL', 'Math'],
+                details: {
+                    introduction: "Machine Learning is a field of Artificial Intelligence (AI) that involves building algorithms that allow computers to learn from data and make predictions or decisions.",
+                    steps: [
+                        { 
+                            title: '1. Foundational Math', 
+                            content: "A strong foundation is crucial. Refresh your knowledge of Linear Algebra, Calculus (multivariable), Statistics, and Probability." 
+                        },
+                        { 
+                            title: '2. Learn Python & Core Libraries', 
+                            content: "Python is the language of ML/AI. Master it, then learn the core data science libraries: NumPy (for numerical operations), Pandas (for data manipulation), and Matplotlib/Seaborn (for data visualization)." 
+                        },
+                        { 
+                            title: '3. Learn Core Machine Learning Algorithms', 
+                            content: "Understand the theory and practical application of models like Linear Regression, Logistic Regression, Decision Trees, Random Forests, K-Means Clustering, and Support Vector Machines (SVM). Learn to use the Scikit-Learn library." 
+                        },
+                        { 
+                            title: '4. Learn Deep Learning', 
+                            content: "This is the subfield powering most modern AI. Learn about neural networks, convolutional neural networks (CNNs for images), and recurrent neural networks (RNNs/LSTMs for text). Master a framework: TensorFlow or PyTorch (PyTorch is currently more popular in research)." 
+                        },
+                        { 
+                            title: '5. Data & MLOps', 
+                            content: "Learn how to gather and clean data (ETL). Learn SQL to query databases. Understand the basics of MLOps (Machine Learning Operations) for deploying, monitoring, and maintaining models in production." 
+                        }
+                    ],
+                    resources: [
+                        { name: 'Kaggle (Datasets & Competitions)', url: 'https://www.kaggle.com/' },
+                        { name: 'DeepLearning.AI (Courses)', url: 'https://www.deeplearning.ai/' },
+                        { name: 'PyTorch Documentation', url: 'https://pytorch.org/docs/stable/index.html' }
+                    ]
+                }
+            },
+            {
+                id: 'data-scientist',
+                category: 'AI & Data Science',
+                title: 'Data Scientist',
+                description: 'Extract, analyze, and interpret large amounts of data to help organizations make better decisions.',
+                tags: ['SQL', 'Python', 'R', 'Statistics', 'Pandas', 'Tableau', 'Business'],
+                details: {
+                    introduction: "A Data Scientist combines computer science, statistics, and business knowledge to extract insights from data. It's less about building models (like ML) and more about answering questions and communicating findings.",
+                    steps: [
+                        { 
+                            title: '1. Master SQL', 
+                            content: "You will spend most of your time querying databases. Become an expert in SQL, including joins, aggregations, window functions, and subqueries." 
+                        },
+                        { 
+                            title: '2. Learn Python (or R) for Data Analysis', 
+                            content: "Master the Python data stack (Pandas, NumPy, Matplotlib) or the R ecosystem (Tidyverse). You'll use this for cleaning, transforming, and analyzing data that won't fit in SQL." 
+                        },
+                        { 
+                            title: '3. Statistics & Probability', 
+                            content: "You must be able to design experiments and interpret their results. Master A/B testing, hypothesis testing, p-values, and statistical significance." 
+                        },
+                        { 
+                            title: '4. Data Visualization & Communication', 
+                            content: "Your insights are useless if you can't communicate them. Learn to build effective charts (Matplotlib, Seaborn, Plotly) and use BI (Business Intelligence) tools like Tableau or Power BI. Practice your presentation skills." 
+                        },
+                        { 
+                            title: '5. Basic Machine Learning', 
+                            content: "You should understand the basics of ML (like regression and classification) to know when to apply them and how to interpret their results, even if you aren't building complex deep learning models." 
+                        }
+                    ],
+                    resources: [
+                        { name: 'Kaggle (Datasets & Notebooks)', url: 'https://www.kaggle.com/' },
+                        { name: 'Mode SQL Tutorial', url: 'https://mode.com/sql-tutorial/' },
+                        { name: 'DataCamp', url: 'https://www.datacamp.com/' }
+                    ]
+                }
+            },
+            {
+                id: 'mobile-dev',
+                category: 'Mobile Development',
+                title: 'Mobile Developer (Cross-Platform)',
+                description: 'Build applications that run on both iOS and Android from a single codebase.',
+                tags: ['Flutter', 'React Native', 'Dart', 'JavaScript', 'Firebase', 'API'],
+                details: {
+                    introduction: "Cross-platform development allows you to write code once and deploy it as a native-like app on both Apple's iOS and Google's Android, saving time and resources.",
+                    steps: [
+                        { 
+                            title: '1. Choose a Framework', 
+                            content: "The two main players are React Native (from Facebook, uses JavaScript/React) and Flutter (from Google, uses a language called Dart). Flutter is newer and gaining popularity rapidly for its performance and great developer experience." 
+                        },
+                        { 
+                            title: '2. Learn the Language', 
+                            content: "If you choose React Native, you need to be strong in JavaScript and React. If you choose Flutter, you need to learn Dart (it's an easy-to-learn, modern language)." 
+                        },
+                        { 
+                            title: '3. Understand Mobile UI/UX', 
+                            content: "Mobile apps have different design patterns than websites. Learn about navigation (tabs, drawers, stacks), state management, and platform-specific guidelines (Apple's Human Interface Guidelines and Google's Material Design)." 
+                        },
+                        { 
+                            title: '4. State Management', 
+                            content: "This is a core concept in mobile apps. For React Native, learn React Context, Zustand, or Redux. For Flutter, learn Provider, Riverpod, or BLoC." 
+                        },
+                        { 
+                            title: '5. Working with APIs & Storage', 
+                            content: "Most apps need to fetch data from a server. Learn to make HTTP requests and handle JSON. Learn how to store data locally on the device (e.g., SharedPreferences, SQLite)." 
+                        },
+                        { 
+                            title: '6. Learn the Deployment Process', 
+                            content: "Learn how to build and deploy your app to the Apple App Store and Google Play Store. This involves creating developer accounts, managing certificates, and following their submission guidelines." 
+                        }
+                    ],
+                    resources: [
+                        { name: 'Flutter Documentation', url: 'https://flutter.dev/docs' },
+                        { name: 'React Native Documentation', url: 'https://reactnative.dev/docs/getting-started' },
+                        { name: 'Firebase (Backend as a Service)', url: 'https://firebase.google.com/' }
+                    ]
+                }
+            }
+        ];
+
+
+        // --- APPLICATION STATE ---
+        let currentCategory = 'All';
+
+        // --- DOM SELECTORS ---
+        const grid = document.getElementById('roadmap-grid');
+        const searchInput = document.getElementById('search-input');
+        const categoryFilters = document.getElementById('category-filters');
+        const noResults = document.getElementById('no-results');
+        const modal = document.getElementById('modal');
+        const modalClose = document.getElementById('modal-close');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+
+        // --- ICON SVGs ---
+        const linkIcon = `
+            <svg class="w-4 h-4 ml-2 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-transform duration-150" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            </svg>`;
+
+        // --- CORE FUNCTIONS ---
+
+        /**
+         * Renders the roadmap cards into the grid.
+         * @param {Array} roadmaps - The array of roadmap objects to render.
+         */
+        function renderRoadmaps(roadmaps) {
+            // Clear the grid
+            grid.innerHTML = '';
+
+            if (roadmaps.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            }
+            
+            noResults.classList.add('hidden');
+
+            // Create and append each card
+            roadmaps.forEach(map => {
+                const card = document.createElement('div');
+                card.className = 'bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-indigo-500/20 hover:-translate-y-1';
+                
+                // Card Body
+                let cardBody = `
+                    <div class="p-6 flex-grow">
+                        <span class="text-indigo-400 text-xs font-medium tracking-wider uppercase">${map.category}</span>
+                        <h3 class="text-xl font-semibold text-white mt-2 mb-2">${map.title}</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">${map.description}</p>
+                    </div>
+                `;
+
+                // Card Footer (Tags & Button)
+                let cardFooter = `
+                    <div class="p-6 bg-gray-800/50 border-t border-gray-700">
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            ${map.tags.map(tag => `<span class="px-3 py-1 bg-gray-700 text-gray-300 text-xs font-medium rounded-full">${tag}</span>`).join('')}
+                        </div>
+                        <button class="view-roadmap-btn w-full inline-flex items-center justify-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md transition duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500" data-id="${map.id}">
+                            View Roadmap
+                            <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </button>
+                    </div>
+                `;
+
+                card.innerHTML = cardBody + cardFooter;
+                grid.appendChild(card);
+            });
+        }
+
+        /**
+         * Creates and renders the category filter buttons.
+         */
+        function renderCategories() {
+            const categories = ['All', ...new Set(roadmapsData.map(map => map.category))];
+            
+            categoryFilters.innerHTML = categories.map(category => {
+                const isActive = category === 'All' ? 'bg-indigo-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600';
+                return `<button class="category-btn px-4 py-2 text-sm font-medium rounded-md transition duration-150 ${isActive}" data-category="${category}">
+                            ${category}
+                        </button>`;
+            }).join('');
+        }
+
+        /**
+         * Filters and re-renders the roadmap grid based on search and category.
+         */
+        function filterAndRender() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+
+            let filteredMaps = roadmapsData;
+
+            // 1. Filter by category
+            if (currentCategory !== 'All') {
+                filteredMaps = filteredMaps.filter(map => map.category === currentCategory);
+            }
+
+            // 2. Filter by search term
+            if (searchTerm) {
+                filteredMaps = filteredMaps.filter(map => 
+                    map.title.toLowerCase().includes(searchTerm) ||
+                    map.description.toLowerCase().includes(searchTerm) ||
+                    map.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                );
+            }
+
+            renderRoadmaps(filteredMaps);
+        }
+
+        /**
+         * Opens and populates the modal with roadmap details.
+         * @param {string} mapId - The ID of the roadmap to display.
+         */
+        function openModal(mapId) {
+            const map = roadmapsData.find(m => m.id === mapId);
+            if (!map) return;
+
+            modalTitle.textContent = map.title;
+
+            let contentHtml = `
+                <p class="text-lg text-gray-300 mb-6">${map.details.introduction}</p>
+                
+                <h4 class="text-xl font-semibold text-white mb-4">Steps to Follow:</h4>
+                <ol class="relative border-l border-gray-600 space-y-6 ml-2 mb-8">
+                    ${map.details.steps.map(step => `
+                        <li class="ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-indigo-600 rounded-full -left-3 ring-8 ring-gray-800 text-white text-xs font-bold">
+                                ${step.title.split('.')[0]}
+                            </span>
+                            <h5 class="font-semibold text-white">${step.title.split('.').slice(1).join('.').trim()}</h5>
+                            <p class="text-sm text-gray-400 mt-1">${step.content}</p>
+                        </li>
+                    `).join('')}
+                </ol>
+
+                <h4 class="text-xl font-semibold text-white mb-4">Helpful Resources:</h4>
+                <div class="space-y-3">
+                    ${map.details.resources.map(res => `
+                        <a href="${res.url}" target="_blank" rel="noopener noreferrer" 
+                           class="group flex items-center p-4 bg-gray-700 hover:bg-gray-600 rounded-lg transition duration-150">
+                            <span class="text-indigo-400 font-medium">${res.name}</span>
+                            ${linkIcon}
+                        </a>
+                    `).join('')}
+                </div>
+            `;
+            
+            modalContent.innerHTML = contentHtml;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        /**
+         * Closes the modal.
+         */
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+
+        // --- EVENT LISTENERS ---
+
+        // Run on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderRoadmaps(roadmapsData);
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+
+        // Search input
+        searchInput.addEventListener('keyup', filterAndRender);
+
+        // Category filter buttons
+        categoryFilters.addEventListener('click', (e) => {
+            const target = e.target.closest('.category-btn');
+            if (!target) return;
+
+            currentCategory = target.dataset.category;
+            
+            // Update button styles
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-gray-700', 'text-gray-300', 'hover:bg-gray-600');
+            });
+            target.classList.add('bg-indigo-600', 'text-white');
+            target.classList.remove('bg-gray-700', 'text-gray-300', 'hover:bg-gray-600');
+
+            filterAndRender();
+        });
+
+        // "View Roadmap" buttons (using event delegation)
+        grid.addEventListener('click', (e) => {
+            const target = e.target.closest('.view-roadmap-btn');
+            if (!target) return;
+            
+            const mapId = target.dataset.id;
+            openModal(mapId);
+        });
+
+        // Modal close button
+        modalClose.addEventListener('click', closeModal);
+
+        // Close modal by clicking outside the content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                closeModal();
+            }
+        });
+
+    </script>
+</body>
+</html>
